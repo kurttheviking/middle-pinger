@@ -1,8 +1,14 @@
 {
   "name": "middle-pinger",
-  "description": "Tiny healthcheck middleware for Express",
   "version": "0.3.0",
-  "author": "kurttheviking <kurttheviking@outlook.com>",
+  "author": "kurttheviking",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kurttheviking/middle-pinger/issues"
+  },
+  "description": "Tiny healthcheck middleware for Express",
+  "homepage": "https://github.com/kurttheviking/middle-pinger",
+
   "keywords": [
     "express",
     "ping",
@@ -12,11 +18,13 @@
   "scripts": {
     "test": "node node_modules/mocha/bin/mocha ./test --recursive"
   },
-  "repository": "git@github.com:kurttheviking/middle-pinger.git",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kurttheviking/middle-pinger.git"
+  },
   "dependencies": {},
   "devDependencies": {
     "chai": "3.2.0",
     "mocha": "2.3.2"
-  },
-  "license": "ISC"
+  }
 }
