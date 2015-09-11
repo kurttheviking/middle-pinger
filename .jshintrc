@@ -1,0 +1,14 @@
+{
+  "asi": false,
+  "bitwise": false,
+  "curly": true,
+  "eqeqeq": true,
+  "esnext": true,
+  "indent": 2,
+  "maxlen": 80,
+  "node": true,
+  "quotmark": "single",
+  "strict": true,
+  "undef": true,
+  "unused": true
+}
