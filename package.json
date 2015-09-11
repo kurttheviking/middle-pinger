@@ -1,6 +1,6 @@
 {
   "name": "middle-pinger",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "author": "kurttheviking",
   "license": "ISC",
   "bugs": {
@@ -8,7 +8,6 @@
   },
   "description": "Tiny healthcheck middleware for Express",
   "homepage": "https://github.com/kurttheviking/middle-pinger",
-
   "keywords": [
     "express",
     "ping",
