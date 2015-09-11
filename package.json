@@ -1,7 +1,7 @@
 {
   "name": "middle-pinger",
   "description": "Tiny healthcheck middleware for Express",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "kurttheviking <kurttheviking@outlook.com>",
   "keywords": [
     "express",
