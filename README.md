@@ -1,23 +1,30 @@
 middle-pinger
 =============
 
-yet another tiny healthcheck middleware designed for express 4.x
+Yet another tiny healthcheck middleware designed for express 4.x
 
 
-## use
+## Quick start
+
+### Install
+
+```sh
+npm install --save middle-pinger
+```
+### Use
 
 ```js
-var express = require('express');
-var ping = require('middle-pinger');
+const express = require('express');
+const ping = require('middle-pinger');
 
-var app = express();
+const app = express();
 
 app.use(ping());
 
 app.listen(8080);
 ```
 
-## example
+### Example
 
 ```sh
 curl http://localhost:8080/ping
@@ -30,63 +37,56 @@ content-type: application/json
 
 ```json
 {
+  "ip": "127.0.0.1",
   "pong": 1430717283603,
   "uptime": 11275273748
 }
 ```
 
 
-## options
+## `options`
 
 The ping middleware accepts an `options` object which can control the ping path as well as the value of the JSON response.
 
-#### options.path
+### `options.path`
 
 `String`. Defaults to `/ping`.
 
 ```js
-var express = require('express');
-var ping = require('middle-pinger');
+const express = require('express');
+const ping = require('middle-pinger');
 
-var app = express();
+const app = express();
 
-var options = {
+const options = {
   path: '/healthcheck'
 };
 
 app.use(ping(options));
 ```
 
-#### options.responder
+### `options.responder(req)`
 
-`Function`. This function must return a `JSON.stringify`-able value. Defaults to an object that contains two keys: `pong` set to the value of `Date.now()` and `uptime` set to the difference between when the middleware was invoked and now (in milliseconds).
+`Function`. This function must return a `JSON.stringify`-able value. Defaults to an `Object` that contains three keys: `ip` set to the value of `req.ip`, `pong` set to the value of `Date.now()`, and `uptime` set to the difference between when the middleware was instantited and now (in milliseconds).
 
 ```js
-var express = require('express');
-var ping = require('middle-pinger');
+const express = require('express');
+const ping = require('middle-pinger');
 
-var app = express();
+const app = express();
 
-var options = {
-  responder: function () {
-    return {
-      'status': 'ok'
-    };
-  }
+const options = {
+  responder: (req) => ({
+    headers: req.headers,
+    status: 'ok'
+  })
 };
 
 app.use(ping(options));
 ```
 
 
-## install
+## Hat tips
 
-```sh
-npm install middle-pinger
-```
-
-
-## hat tips
-
-- @jden for first agilemd version
-- izs and [pingme](https://github.com/npm/pingme)
+- `@jden` for first version used within `@agilemd` products
+- `@izs` and [pingme](https://github.com/npm/pingme)

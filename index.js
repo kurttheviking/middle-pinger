@@ -1,28 +1,31 @@
-'use strict';
+function middleware(opts) {
+  const options = opts || {};
 
-module.exports = function middleware (options) {
-  options = options || {};
+  const launch = Date.now();
+  const path = options.path || '/ping';
 
-  var launch = Date.now();
-  var path = options.path || '/ping';
-  var responder = options.responder || function () {
-    var now = Date.now();
+  function defaultResponder(req) {
+    const now = Date.now();
 
     return {
+      ip: req.ip,
       pong: now,
       uptime: now - launch
     };
-  };
+  }
 
-  function pong (req, res, next) {
+  const responder = options.responder || defaultResponder;
+
+  return (req, res, next) => {
     if (req.url !== path) {
       return next();
     }
 
-    res.setHeader('content-type','application/json');
-    res.write(JSON.stringify(responder()));
-    res.end();
-  }
+    res.setHeader('content-type', 'application/json');
+    res.write(JSON.stringify(responder(req)));
 
-  return pong;
-};
+    return res.end();
+  };
+}
+
+module.exports = middleware;
