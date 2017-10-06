@@ -1,6 +1,6 @@
 {
   "name": "middle-pinger",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "author": "kurttheviking",
   "license": "ISC",
   "bugs": {
@@ -21,8 +21,7 @@
     "type": "git",
     "url": "git@github.com:kurttheviking/middle-pinger.git"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "chai": "4.1.2",
     "eslint": "3.19.0",
